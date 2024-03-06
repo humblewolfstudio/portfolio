@@ -1,0 +1,23 @@
+version: '2.1'
+
+services:
+  nodejs:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    container_name: portfolio-frontend
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.erfonbackend.rule=Host(`portfolio.capicua.org.es`)"
+      - "traefik.http.routers.erfonbackend.entrypoints=websecure"
+      - "traefik.http.routers.erfonbackend.tls.certresolver=letsencrypt"
+      - "traefik.http.services.erfonbackend.loadbalancer.server.port=3000"
+    networks:
+      - traefik-global-proxy
+    mem_limit: 300m
+    mem_reservation: 100m
+
+networks:
+  traefik-global-proxy:
+    external: true

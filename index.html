@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noel's Portfolio</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h1 class="header-title">Noel's Portfolio</h1>
+            <p class="header-description">Welcome to Noel's portfolio, here are some of the projects I'm most proud
+            </p>
+        </div>
+        <section class="slider-wrapper">
+            <button class="slide-arrow" id="slide-arrow-prev">
+                &#8249;
+            </button>
+
+            <button class="slide-arrow" id="slide-arrow-next">
+                &#8250;
+            </button>
+
+            <ul class="slides-container" id="slides-container">
+                <li class="slide">
+                    <div class="card">
+                        <h2 class="card-title">Notifyer</h2>
+                        <p class="card-description">Receive your android push notifications in your mac.</p>
+                        <img class="card-image" src="/images/notifyer_logo.png">
+                        <a class="card-link" href="https://github.com/orgs/Notifyer/repositories" target="_blank"
+                            rel="noopener noreferrer">Go to Project!</a>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="card">
+                        <h2 class="card-title">DocLite</h2>
+                        <p class="card-description">Single-file NoSQL Document based database.</p>
+                        <img class="card-image" src="/images/BLANK_ICON.png">
+                        <a class="card-link" href="https://github.com/humblewolfstudio/doc-lite" target="_blank"
+                            rel="noopener noreferrer">Go to Project!</a>
+                    </div>
+                </li>
+                <li class="slide">
+                    <div class="card">
+                        <h2 class="card-title">Volume Changer</h2>
+                        <p class="card-description">TCP server to change your volume and play/pause your media.</p>
+                        <img class="card-image" src="/images/BLANK_ICON.png">
+                        <a class="card-link" href="https://github.com/humblewolfstudio/volume_changer" target="_blank"
+                            rel="noopener noreferrer">Go to Project!</a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+<script>
+    const slidesContainer = document.getElementById("slides-container");
+    const slide = document.querySelector(".slide");
+    const prevButton = document.getElementById("slide-arrow-prev");
+    const nextButton = document.getElementById("slide-arrow-next");
+    const timeoutTime = 500;
+
+    nextButton.addEventListener("click", () => {
+        const slideWidth = slide.clientWidth;
+        slidesContainer.scrollLeft += slideWidth;
+        nextButton.disabled = true;
+        setTimeout(enableButton, timeoutTime);
+    });
+
+    prevButton.addEventListener("click", () => {
+        const slideWidth = slide.clientWidth;
+        slidesContainer.scrollLeft -= slideWidth;
+        prevButton.disabled = true;
+        setTimeout(enableButton, timeoutTime);
+    });
+
+    function enableButton() {
+        nextButton.disabled = false;
+        prevButton.disabled = false;
+    }
+</script>
+
+</html>
