@@ -9,10 +9,10 @@ services:
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.erfonbackend.rule=Host(`portfolio.capicua.org.es`)"
-      - "traefik.http.routers.erfonbackend.entrypoints=websecure"
-      - "traefik.http.routers.erfonbackend.tls.certresolver=letsencrypt"
-      - "traefik.http.services.erfonbackend.loadbalancer.server.port=3000"
+      - "traefik.http.routers.portfolio.rule=Host(`portfolio.capicua.org.es`)"
+      - "traefik.http.routers.portfolio.entrypoints=websecure"
+      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
+      - "traefik.http.services.portfolio.loadbalancer.server.port=3000"
     networks:
       - traefik-global-proxy
     mem_limit: 300m
