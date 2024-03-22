@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   spa-to-http:
-    build: "frontend"
+    build: "Docker"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.portfolio.rule=Host(`portoflio.capicua.org.es`)"
