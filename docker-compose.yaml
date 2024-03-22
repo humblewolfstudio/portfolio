@@ -2,8 +2,20 @@ version: "3.3"
 
 services:
   spa-to-http:
-    build: "Dockerfile"
+    build:
+      context: ./
+      dockerfile: Dockerfile
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.portfolio.rule=Host(`portoflio.capicua.org.es`)"
+      - "traefik.http.routers.portfolio.rule=Host(`portfolio.capicua.org.es`)"
+      - "traefik.http.routers.portfolio.entrypoints=websecure"
+      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
       - "traefik.http.services.portfolio.loadbalancer.server.port=8080"
+    networks:
+      - traefik-global-proxy
+    mem_limit: 300m
+    mem_reservation: 100m
+
+networks:
+  traefik-global-proxy:
+    external: true
