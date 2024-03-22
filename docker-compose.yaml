@@ -1,0 +1,9 @@
+version: "3.3"
+
+services:
+  spa-to-http:
+    build: "frontend"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio.rule=Host(`portoflio.capicua.org.es`)"
+      - "traefik.http.services.portfolio.loadbalancer.server.port=8080"
